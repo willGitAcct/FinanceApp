@@ -1,5 +1,6 @@
 package com.example.financeapp.ui.theme
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,30 +18,49 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.financeapp.HomeScreen
 
 
-@Preview(showSystemUi = true)
+//@PreviewParameter(showSystemUi = true)
 @Composable
-fun SignInScreen() {
+fun SignInScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ){
-        Title()
+        Title("Welcome!")
         Email()
         Password()
-        SignInBtn()
+        SignInBtn(navHome = {navController.navigate("home_page")})
 
     }
 }
+@Composable
+fun UsersApplication(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "sign_in") {
+        composable("sign_in"){
+            SignInScreen(navController)
+        }
+        composable("home_page"){
+            HomeScreen()
+        }
+    }
+}
+
 
 @Composable
-fun SignInBtn() {
+fun SignInBtn(navHome: () -> Unit) {
   Button(
-      onClick = { },
+      onClick = navHome,
       modifier = Modifier
           .fillMaxWidth(),
       contentPadding = PaddingValues(16.dp),
@@ -109,8 +129,8 @@ fun Password() {
         )}
 
 @Composable
-fun Title() {
+fun Title(text: String) {
     Text(
-        text = "Welcome!",
+        text = text,
         style = MaterialTheme.typography.h3
     )}

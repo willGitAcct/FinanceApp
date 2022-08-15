@@ -13,15 +13,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.ui.theme.FinanceAppTheme
 import com.example.financeapp.ui.theme.SignInScreen
+import com.example.financeapp.ui.theme.UsersApplication
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FinanceAppTheme {
-              SignInScreen()
+              //SignInScreen()
+                UsersApplication()
             }
         }
     }
@@ -29,10 +34,12 @@ class MainActivity : ComponentActivity() {
 
 
 
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     FinanceAppTheme {
-        SignInScreen()
+        //SignInScreen()
+        UsersApplication()
     }
 }
