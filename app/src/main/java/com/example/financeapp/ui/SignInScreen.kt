@@ -27,7 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.HomeScreen
 
 
-//@PreviewParameter(showSystemUi = true)
+//@PreviewParameter()
 @Composable
 fun SignInScreen(navController: NavController) {
     Column(
@@ -43,6 +43,8 @@ fun SignInScreen(navController: NavController) {
 
     }
 }
+
+//for navigating to the other page----------------------------------------------------------------------
 @Composable
 fun UsersApplication(){
     val navController = rememberNavController()
@@ -55,7 +57,7 @@ fun UsersApplication(){
         }
     }
 }
-
+//---------------------------------------------------------------------------------------------------
 
 @Composable
 fun SignInBtn(navHome: () -> Unit) {
@@ -89,6 +91,29 @@ fun Email() {
             unfocusedIndicatorColor = Color.Transparent),
         shape = RoundedCornerShape(8.dp),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+    )
+}
+
+
+//template for a field composable with the same presets as the others
+//
+//@Composable
+
+@Composable
+fun FormField(label: String) {
+    val formState = remember{ mutableStateOf(TextFieldValue()) }
+
+    TextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = formState.value,
+        onValueChange = {formState.value = it},
+        label = {Text(text= label)},
+        colors = TextFieldDefaults.textFieldColors(
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent),
+        shape = RoundedCornerShape(8.dp),
+        //if needed
+        //keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
     )
 }
 
