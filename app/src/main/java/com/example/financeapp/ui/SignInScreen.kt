@@ -124,23 +124,23 @@ fun Email() {
 //
 //@Composable
 
-@Composable
-fun FormField(label: String) {
-    val formState = remember{ mutableStateOf(TextFieldValue()) }
-
-    TextField(
-        modifier = Modifier.fillMaxWidth(),
-        value = formState.value,
-        onValueChange = {formState.value = it},
-        label = {Text(text= label)},
-        colors = TextFieldDefaults.textFieldColors(
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent),
-        shape = RoundedCornerShape(8.dp),
-        //if needed
-        //keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
-    )
-}
+//@Composable
+//fun FormField(label: String) {
+//    val formState = remember{ mutableStateOf(TextFieldValue()) }
+//
+//    TextField(
+//        modifier = Modifier.fillMaxWidth(),
+//        value = formState.value,
+//        onValueChange = {formState.value = it},
+//        label = {Text(text= label)},
+//        colors = TextFieldDefaults.textFieldColors(
+//            focusedIndicatorColor = Color.Transparent,
+//            unfocusedIndicatorColor = Color.Transparent),
+//        shape = RoundedCornerShape(8.dp),
+//        //if needed
+//        //keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+//    )
+//}
 
 @Composable
 fun Password() {

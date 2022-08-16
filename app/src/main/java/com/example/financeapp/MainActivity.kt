@@ -1,6 +1,8 @@
 package com.example.financeapp
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -19,10 +21,18 @@ import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.ui.theme.FinanceAppTheme
 import com.example.financeapp.ui.theme.SignInScreen
 import com.example.financeapp.ui.theme.UsersApplication
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
+private lateinit var auth: FirebaseAuth
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+
         setContent {
             FinanceAppTheme {
               //SignInScreen()
