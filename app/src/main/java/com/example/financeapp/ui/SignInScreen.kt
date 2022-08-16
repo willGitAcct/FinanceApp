@@ -13,10 +13,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -25,6 +27,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.HomeScreen
+import com.example.financeapp.ui.SignUpScreen
 
 
 //@PreviewParameter()
@@ -40,11 +43,16 @@ fun SignInScreen(navController: NavController) {
         Email()
         Password()
         SignInBtn(navHome = {navController.navigate("home_page")})
+        TextButton(onClick = { navController.navigate("sign_up")}) {
+            Text(text = "Click here to register",
+                style = TextStyle(textDecoration = TextDecoration.Underline))
+        }
 
     }
 }
 
 //for navigating to the other page----------------------------------------------------------------------
+@Preview
 @Composable
 fun UsersApplication(){
     val navController = rememberNavController()
@@ -55,9 +63,26 @@ fun UsersApplication(){
         composable("home_page"){
             HomeScreen()
         }
+        composable(route = "sign_up"){
+            SignUpScreen()
+        }
     }
 }
 //---------------------------------------------------------------------------------------------------
+//
+//@Composable
+//no need for this, can just add to the one navigation fn
+//fun navSignUp(){
+//        val navController = rememberNavController()
+//        NavHost(navController = navController, startDestination = "sign_in") {
+//            composable("sign_in"){
+//                SignInScreen(navController)
+//            }
+//            composable("sign_up"){
+//                SignUpScreen()
+//            }
+//        }
+//}
 
 @Composable
 fun SignInBtn(navHome: () -> Unit) {
