@@ -27,9 +27,9 @@ import java.time.Duration
 //for firebase
 private lateinit var auth: FirebaseAuth
 
-@Preview
+//@Preview
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(navController: NavController) {
     auth = Firebase.auth
     Column(
         modifier = Modifier
@@ -87,9 +87,11 @@ fun SignUpScreen() {
         onClick = {
                   auth.createUserWithEmailAndPassword(emailState.value.text, pwState.value.text)
                       .addOnCompleteListener { if(it.isSuccessful){
+                          navController.navigate("home_page")
                           Log.d(TAG,"success! check console")
                       } else {
                           Log.d(TAG,"Failure.....",it.exception)
+
                       }
                       }
                   },

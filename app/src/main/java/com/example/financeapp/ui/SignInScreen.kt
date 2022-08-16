@@ -64,7 +64,7 @@ fun UsersApplication(){
             HomeScreen()
         }
         composable(route = "sign_up"){
-            SignUpScreen()
+            SignUpScreen(navController)
         }
     }
 }
