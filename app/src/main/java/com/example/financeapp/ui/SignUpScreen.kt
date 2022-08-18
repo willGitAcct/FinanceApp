@@ -38,104 +38,75 @@ fun SignUpScreen(navController: NavController) {
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ){
 
-        Title("Sign Up Here!")
-    val formState = remember { mutableStateOf(TextFieldValue()) }
-    val emailState = remember { mutableStateOf(TextFieldValue())}
-    val pwState = remember { mutableStateOf(TextFieldValue())}
+            Title("Sign Up Here!")
+        val formState = remember { mutableStateOf(TextFieldValue()) }
+        val emailState = remember { mutableStateOf(TextFieldValue())}
+        val pwState = remember { mutableStateOf(TextFieldValue())}
 
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = emailState.value,
+                onValueChange = { emailState.value = it },
+                label = { Text(text = "Email") },
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                ),
+                shape = RoundedCornerShape(8.dp),
+                //if needed
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+            )
         TextField(
             modifier = Modifier.fillMaxWidth(),
-            value = emailState.value,
-            onValueChange = { emailState.value = it },
-            label = { Text(text = "Email") },
+            value = pwState.value,
+            onValueChange = { pwState.value = it },
+            label = { Text(text = "Password") },
             colors = TextFieldDefaults.textFieldColors(
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
             shape = RoundedCornerShape(8.dp),
             //if needed
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+
         )
-    TextField(
-        modifier = Modifier.fillMaxWidth(),
-        value = pwState.value,
-        onValueChange = { pwState.value = it },
-        label = { Text(text = "Password") },
-        colors = TextFieldDefaults.textFieldColors(
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
-        ),
-        shape = RoundedCornerShape(8.dp),
-        //if needed
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
-
-    )
-    TextField(
-        modifier = Modifier.fillMaxWidth(),
-        value = formState.value,
-        onValueChange = { formState.value = it },
-        label = { Text(text = "Re-Enter Password") },
-        colors = TextFieldDefaults.textFieldColors(
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
-        ),
-        shape = RoundedCornerShape(8.dp),
-        //if needed
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
-    )
-    Button(
-        onClick = {
-                  auth.createUserWithEmailAndPassword(emailState.value.text, pwState.value.text)
-                      .addOnCompleteListener { if(it.isSuccessful){
-                          navController.navigate("home_page")
-                          Log.d(TAG,"success! check console")
-                      } else {
-                          Log.d(TAG,"Failure.....",it.exception)
-
-                      }
-                      }
-                  },
-        modifier = Modifier
-            .fillMaxWidth(),
-        contentPadding = PaddingValues(16.dp),
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color(0xFF4974a5),
-            contentColor = Color.White
+        TextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = formState.value,
+            onValueChange = { formState.value = it },
+            label = { Text(text = "Re-Enter Password") },
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            ),
+            shape = RoundedCornerShape(8.dp),
+            //if needed
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
-    ) {
-        Text("Sign Up Button")
+        Button(
+            onClick = {
+                      auth.createUserWithEmailAndPassword(emailState.value.text, pwState.value.text)
+                          .addOnCompleteListener { if(it.isSuccessful){
+                              navController.navigate("home_page")
+                              Log.d(TAG,"success! check console")
+                          } else {
+                              Log.d(TAG,"Failure.....",it.exception)
 
-    }
-//
+                          }
+                          }
+                      },
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentPadding = PaddingValues(16.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color(0xFF4974a5),
+                contentColor = Color.White
+            )
+        ) {
+            Text("Sign Up Button")
+
+        }
+    //
     }
 }
-
-@Composable
-fun formField() {
-
-}
-//}
-//@Composable
-//fun SignUpBtn() {
-//    //TODO("Not yet implemented")
-//    Button(onClick = {auth.signInWithEmailAndPassword(formState, password)
-//        .addOnCompleteListener {
-//            if (it.isSuccessful){
-//                Log.d(TAG, "success")
-//            }else {
-//                Log.d(TAG, "failure")
-//            }
-//        }},
-//        modifier = Modifier
-//            .fillMaxWidth(),
-//        contentPadding = PaddingValues(16.dp),
-//        colors = ButtonDefaults.buttonColors(
-//            backgroundColor = Color( 0xFF4974a5),
-//            contentColor = Color.White
-//        )) {
-//        Text("Sign Up Button")
-//
-//    }
-//}
-
 

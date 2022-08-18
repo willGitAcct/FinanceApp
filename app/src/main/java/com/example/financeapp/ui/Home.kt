@@ -41,8 +41,7 @@ fun HomeScreen(){
 fun SearchField() {
     val searchState = remember{ mutableStateOf(TextFieldValue()) }
 
-//    //locacl context
-//    val result = LocalContext.current
+
     TextField(
         modifier = Modifier.fillMaxWidth(),
         value = searchState.value,
