@@ -12,15 +12,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.financeapp.User
 import com.example.financeapp.ui.theme.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import java.time.Duration
 
@@ -30,7 +33,9 @@ private lateinit var auth: FirebaseAuth
 //@Preview
 @Composable
 fun SignUpScreen(navController: NavController) {
-    auth = Firebase.auth
+
+    val context = LocalContext.current//for toast
+    auth = FirebaseAuth.getInstance()
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -58,9 +63,9 @@ fun SignUpScreen(navController: NavController) {
             )
         TextField(
             modifier = Modifier.fillMaxWidth(),
-            value = pwState.value,
-            onValueChange = { pwState.value = it },
-            label = { Text(text = "Password") },
+            value = formState.value,
+            onValueChange = { formState.value = it },
+            label = { Text(text = "Username") },
             colors = TextFieldDefaults.textFieldColors(
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
@@ -72,9 +77,9 @@ fun SignUpScreen(navController: NavController) {
         )
         TextField(
             modifier = Modifier.fillMaxWidth(),
-            value = formState.value,
-            onValueChange = { formState.value = it },
-            label = { Text(text = "Re-Enter Password") },
+            value = pwState.value,
+            onValueChange = { pwState.value = it },
+            label = { Text(text = "Password") },
             colors = TextFieldDefaults.textFieldColors(
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
@@ -87,8 +92,17 @@ fun SignUpScreen(navController: NavController) {
             onClick = {
                       auth.createUserWithEmailAndPassword(emailState.value.text, pwState.value.text)
                           .addOnCompleteListener { if(it.isSuccessful){
-                              navController.navigate("home_page")
+                              //navController.navigate("home_page")
                               Log.d(TAG,"success! check console")
+                              val user = User(emailState.value.text, formState.value.text)
+                              FirebaseAuth.getInstance().currentUser?.let { it1 ->
+                                  FirebaseDatabase.getInstance().getReference("User")
+                                      .child(it1.uid).setValue(user)
+                          }
+                              Toast.makeText(context, "Registered Successfully; logging in..", Toast.LENGTH_SHORT).show()
+
+                              navController.navigate("home_page")
+
                           } else {
                               Log.d(TAG,"Failure.....",it.exception)
 
