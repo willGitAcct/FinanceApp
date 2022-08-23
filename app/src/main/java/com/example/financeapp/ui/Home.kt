@@ -1,14 +1,9 @@
 package com.example.financeapp
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -54,6 +49,17 @@ fun SearchField() {
     )
 
     Text("Results: "+ searchState.value.text)
+
+    Button(onClick = { /*TODO*/ },
+        modifier = Modifier
+            .fillMaxWidth(),
+        contentPadding = PaddingValues(16.dp),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color(0xFF4974a5),
+            contentColor = Color.White) )
+        {
+            Text("Add stock to your favourites")
+    }
 
 
 }
