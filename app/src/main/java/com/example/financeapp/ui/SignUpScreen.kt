@@ -94,7 +94,7 @@ fun SignUpScreen(navController: NavController) {
                           .addOnCompleteListener { if(it.isSuccessful){
                               //navController.navigate("home_page")
                               Log.d(TAG,"success! check console")
-                              val user = User(emailState.value.text, formState.value.text, listOf(""))
+                              val user = User(emailState.value.text, formState.value.text, arrayListOf(""))
                               FirebaseAuth.getInstance().currentUser?.let { it1 ->
                                   FirebaseDatabase.getInstance().getReference("User")
                                       .child(it1.uid).setValue(user)
