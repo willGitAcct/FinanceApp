@@ -1,5 +1,8 @@
 package com.example.financeapp
 
+import android.content.ContentValues.TAG
+import android.nfc.Tag
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -22,9 +25,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import java.io.Console
 
 //val user = Firebase.auth.currentUser
 @Preview(showSystemUi = true)
@@ -48,6 +54,24 @@ fun SearchField() {
     val dbRef = FirebaseDatabase.getInstance().getReference("User")
     val user = FirebaseAuth.getInstance().currentUser
     val uid = user!!.uid
+    val stock: ArrayList<String> = ArrayList()
+
+    dbRef.child(uid).child("favourites").addValueEventListener(object: ValueEventListener{
+        override fun onDataChange(snapshot: DataSnapshot) {
+            println()
+            val getStocks = snapshot.value
+            println(getStocks)
+
+            stock.add(getStocks.toString())
+//                stock.add(searchState.value.text)
+
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+
+    })
     TextField(
         modifier = Modifier.fillMaxWidth(),
         value = searchState.value,
@@ -63,9 +87,17 @@ fun SearchField() {
 
     Button(onClick = {
 
-        val stock: ArrayList<String> = ArrayList()
+
+
+        //println(dbRef.child(uid).child("favourites").get().toString())
+        //"com.google.android.gms.tasks.zzw@9a01f19"
+
+
+
+       // stock.add()
         stock.add(searchState.value.text)
 
+        //correctly finds the favourites category in the db
         dbRef.child(uid).child("favourites").setValue(stock)
     },
         modifier = Modifier
