@@ -12,6 +12,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
+import com.example.financeapp.ui.BottomNavHost
+import com.example.financeapp.ui.BottomNavScreen
+import com.example.financeapp.ui.Screen
 import com.example.financeapp.ui.theme.Title
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -22,46 +26,66 @@ import com.google.firebase.database.ValueEventListener
 //val user = Firebase.auth.currentUser
 @Preview(showSystemUi = true)
 @Composable
-fun HomeScreen(){
+fun navBar() {
+    val listItems = listOf(Screen.Home, Screen.Notification, Screen.Star)
+    val navController = rememberNavController()
+    Scaffold(bottomBar = {
+        BottomNavScreen(navController = navController, item = listItems)
+    }) {
+        BottomNavHost(navHostController = navController)
 
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Title("Home Screen")
-        SearchField()
+
     }
-
-
 }
 
-@Composable
-fun SearchField() {
-    val searchState = remember{ mutableStateOf(TextFieldValue()) }
-    val dbRef = FirebaseDatabase.getInstance().getReference("User")
-    val user = FirebaseAuth.getInstance().currentUser
-    val uid = user!!.uid
-    var stock: String = ""
 
-    TextField(
-        modifier = Modifier.fillMaxWidth(),
-        value = searchState.value,
-        onValueChange = {searchState.value = it},
-        label = {Text(text= "Enter Stock ticker or symbol")},
-        colors = TextFieldDefaults.textFieldColors(
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent),
-        shape = RoundedCornerShape(8.dp),
-    )
 
-    Text("Results: "+ searchState.value.text)
 
-    Button(onClick = {
-        //println(dbRef.child(uid).child("favourites").get().toString())
-        //"com.google.android.gms.tasks.zzw@9a01f19"
-       // stock.add()
+    @Composable
+    fun HomeScreen() {
 
-        //this gets the value of the user's favourites list, before adding to it later when the button is clicked
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Title("Home Screen")
+            SearchField()
+        }
+
+
+    }
+
+    @Composable
+    fun SearchField() {
+        val searchState = remember { mutableStateOf(TextFieldValue()) }
+        val dbRef = FirebaseDatabase.getInstance().getReference("User")
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user!!.uid
+        var stock: String = ""
+
+        TextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = searchState.value,
+            onValueChange = { searchState.value = it },
+            label = { Text(text = "Enter Stock ticker or symbol") },
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            ),
+            shape = RoundedCornerShape(8.dp),
+        )
+
+        Text("Results: " + searchState.value.text)
+
+        Button(
+            onClick = {
+                //println(dbRef.child(uid).child("favourites").get().toString())
+                //"com.google.android.gms.tasks.zzw@9a01f19"
+                // stock.add()
+
+                //this gets the value of the user's favourites list, before adding to it later when the button is clicked
 //        dbRef.child(uid).child("favourites").addValueEventListener(object: ValueEventListener{
 //            override fun onDataChange(snapshot: DataSnapshot) {
 //                val stocks: String? = snapshot.getValue(String::class.java)
@@ -82,39 +106,42 @@ fun SearchField() {
 //            }
 //
 //        })
-        dbRef.child(uid).child("favourites").get().addOnSuccessListener {
-            val stocks: String = it.getValue(String::class.java).toString()
-                println(stocks + "1")
+                dbRef.child(uid).child("favourites").get().addOnSuccessListener {
+                    val stocks: String = it.getValue(String::class.java).toString()
+                    println(stocks + "1")
                     //val user: User = User()
                     stock = stocks
-                    println(stock+"2")
-                    stock+= searchState.value.text+","
+                    println(stock + "2")
+                    stock += searchState.value.text + ","
                     //stock.add(searchState.value.text)
                     dbRef.child(uid).child("favourites").setValue(stock)
 
 
-                println(stock + "3")
-            Log.i("firebase", "Got value ${it.value}")
+                    println(stock + "3")
+                    Log.i("firebase", "Got value ${it.value}")
 
-        }
-        //println(stock)
-        //stock = dbRef.child(uid).child("favourites").getValue
+                }
+                //println(stock)
+                //stock = dbRef.child(uid).child("favourites").getValue
 
 
-        //correctly finds the favourites category in the db
-    },
-        modifier = Modifier
-            .fillMaxWidth(),
-        contentPadding = PaddingValues(16.dp),
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color(0xFF4974a5),
-            contentColor = Color.White) )
+                //correctly finds the favourites category in the db
+            },
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentPadding = PaddingValues(16.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color(0xFF4974a5),
+                contentColor = Color.White
+            )
+        )
         {
             Text("Set Stock as Favourite")
+        }
+
+
     }
 
-
-}
 
 
 

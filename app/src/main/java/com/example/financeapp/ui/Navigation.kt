@@ -13,11 +13,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.financeapp.HomePage
+import com.example.financeapp.HomeScreen
 import com.example.financeapp.NotificationPage
 import com.example.financeapp.StarPage
 
 sealed class Screen(val title:String, val route: String, @DrawableRes val icons: Int){
-    object Home:Screen(title = "home", "home_route", icons = com.example.financeapp.R.drawable.ic_baseline_home_24)
+    object Home:Screen(title = "home", "home_page", icons = com.example.financeapp.R.drawable.ic_baseline_home_24)
     object Notification:Screen(title = "notification", "notice_route", icons = com.example.financeapp.R.drawable.ic_baseline_mode_comment_24)
     object Star:Screen(title = "star", "star_route", icons = com.example.financeapp.R.drawable.ic_baseline_star_outline_24)
 
@@ -28,7 +29,7 @@ sealed class Screen(val title:String, val route: String, @DrawableRes val icons:
 fun BottomNavHost(navHostController: NavHostController){
     NavHost(navController = navHostController, startDestination = Screen.Home.route){
         composable(route = Screen.Home.route){
-            HomePage()
+            HomeScreen()
         }
         composable(route = Screen.Notification.route){
             NotificationPage()

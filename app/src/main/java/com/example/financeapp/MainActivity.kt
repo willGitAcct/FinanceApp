@@ -38,15 +38,15 @@ class MainActivity : ComponentActivity() {
         auth = Firebase.auth
 
         setContent {
-            val listItems = listOf(Screen.Home, Screen.Notification, Screen.Star)
-            val navController = rememberNavController()
+
             FinanceAppTheme {
               //SignInScreen()
-                Scaffold(bottomBar = {BottomNavScreen(navController = navController, item = listItems)
-                }) {
-                    BottomNavHost(navHostController = navController)
-                    UsersApplication()
-                }
+                UsersApplication()
+//                Scaffold(bottomBar = {BottomNavScreen(navController = navController, item = listItems)
+//                }) {
+//                    BottomNavHost(navHostController = navController)
+//
+//                }
             }
         }
     }

@@ -29,6 +29,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.HomeScreen
+import com.example.financeapp.navBar
 import com.example.financeapp.ui.SignUpScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -144,7 +145,7 @@ fun UsersApplication(){
             SignInScreen(navController)
         }
         composable("home_page"){
-            HomeScreen()
+            navBar()
         }
         composable(route = "sign_up"){
             SignUpScreen(navController)
