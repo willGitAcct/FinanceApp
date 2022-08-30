@@ -7,6 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.financeapp.ui.Screen
 
 @Composable
 fun HomePage(){
@@ -17,17 +18,17 @@ fun HomePage(){
 }
 
 @Composable
-fun NotificationPage(){
+fun CalculatorPage(){
     Box(modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center){
-        Text(text = "Notifications")
+        Text(text = "Calculator")
     }
 }
 
 @Composable
-fun StarPage(){
+fun LearningPage(){
     Box(modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center){
-        Text(text = "Stars")
+        Text(text = "Learning")
     }
 }

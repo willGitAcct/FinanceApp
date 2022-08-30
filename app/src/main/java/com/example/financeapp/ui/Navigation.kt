@@ -12,15 +12,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.financeapp.HomePage
-import com.example.financeapp.HomeScreen
-import com.example.financeapp.NotificationPage
-import com.example.financeapp.StarPage
+import com.example.financeapp.*
 
 sealed class Screen(val title:String, val route: String, @DrawableRes val icons: Int){
-    object Home:Screen(title = "home", "home_page", icons = com.example.financeapp.R.drawable.ic_baseline_home_24)
-    object Notification:Screen(title = "notification", "notice_route", icons = com.example.financeapp.R.drawable.ic_baseline_mode_comment_24)
-    object Star:Screen(title = "star", "star_route", icons = com.example.financeapp.R.drawable.ic_baseline_star_outline_24)
+    object Home:Screen(title = "Home", "home_page", icons = com.example.financeapp.R.drawable.ic_baseline_home_24)
+    object Calculator:Screen(title = "Calculator", "calc_route", icons = com.example.financeapp.R.drawable.ic_baseline_calculate_24)
+    object History:Screen(title = "Learning", "learning_route", icons = com.example.financeapp.R.drawable.ic_baseline_history_edu_24)
 
 
 }
@@ -31,11 +28,11 @@ fun BottomNavHost(navHostController: NavHostController){
         composable(route = Screen.Home.route){
             HomeScreen()
         }
-        composable(route = Screen.Notification.route){
-            NotificationPage()
+        composable(route = Screen.Calculator.route){
+            CalculatorPage()
         }
-        composable(route = Screen.Star.route){
-            StarPage()
+        composable(route = Screen.History.route){
+            LearningPage()
         }
     }
 }
