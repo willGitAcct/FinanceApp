@@ -140,7 +140,7 @@ fun SignInScreen(navController: NavController) {
 @Composable
 fun UsersApplication(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "sign_in") {
+    NavHost(navController = navController, startDestination = "home_page") {
         composable("sign_in"){
             SignInScreen(navController)
         }
