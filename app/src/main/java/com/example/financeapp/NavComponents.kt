@@ -114,30 +114,19 @@ fun CalculatorPage(){
                             // this method is called when
                             // radio button is selected.
                             selected = (text == selectedOption),
-                            // below method is called on
-                            // clicking of radio button.
+
                             onClick = { onOptionSelected(text) }
                         )
 
 
                 ) {
 
-                    // below line is use to
-                    // generate radio button
+                    //generate Radio buttons
                     RadioButton(
-                        // inside this method we are
-                        // adding selected with a option.
                         selected = (text == selectedOption),
+                        onClick = {onOptionSelected(text)
+                        })
 
-                        onClick = {
-                            // inside on click method we are setting a
-                            // selected option of our radio buttons.
-                            onOptionSelected(text)
-
-                        }
-                    )
-                    // below line is use to add
-                    // text to our radio buttons.
                     Text(
                         text = text,
                         fontSize = 12.sp
@@ -157,7 +146,7 @@ fun CalculatorPage(){
 
                 principal = Integer.parseInt(principalState.value.text)
                 years = Integer.parseInt(yearState.value.text)
-                rates = Integer.parseInt(interestState.value.text).toDouble()
+                rates = interestState.value.text.toDouble()
                 //compound = Integer.parseInt(selectedOption)
 
 
