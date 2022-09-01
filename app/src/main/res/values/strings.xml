@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">FinanceApp</string>
+
+    <string name="History1">\nHISTORY OF INVESTING\n
+
+According to historical accounts, investing can be traced back to the Code of Hammurabi, which was written around 1700 BCE in Mesopotamia (modern day Iraq). Historians argue that the historic code provided the framework for many of civilization’s essential laws, including the legal framework for investment. The law established a way to pledge collateral in exchange for investing in a project. In the code, the land was pledged as collateral, and anyone who broke their obligation was punished.
+While the Code of Hammurabi provided the foundational laws, most modern investing go back to 17th century Europe.
+
+\n\nAMSTERDAMN STOCK EXCHANGE\n\n
+The Amsterdam Stock Exchange is regarded as the predecessor of modern investing. It is said to operate much like current stock exchanges, which connects potential investors with investment opportunities while also allowing people in business to communicate with willing investors. Furthermore, the structure of the Amsterdam Stock Exchange itself made investing more straightforward and standardized, paving the way for the modern stock exchange.
+\n</string>
+
+    <string name="History2">
+\nTHE ADVENT OF STOCK INDEXES\n\n
+
+In the 1800s, measuring the performance of various stocks was a lot more complicated than merely checking stock indexes. Finance journalist Charles H. Dow created the first version of a stock index by averaging the top 12 stocks of crucial industrial sectors—mining companies, railroads, and steel mills, to name a few. This was called the Railroad Average, which was later renamed Dow Jones Transportation Average, and eventually, Dow Jones Industrial Average. Today, the Dow is still an essential part of the investing ecosystem, measuring 30 companies from various industries, including Coca-Cola.
+
+Just like the industrial revolution, the emergence of the internet and other electronic communication platforms had a profound impact on the development of investing. The existence of modern communications led to the development of the NASDAQ 100, which was designed to be a market-weighted index—much like S and P—but it included more technology companies.
+
+However, in the late 1990s, the overexposure of the NASDAQ led to investors boosting the tech bubble, which precipitated the bursting of the dotcom bubble.
+
+        \n\nMODERN INVESTING\n\n
+Today, investing is made more accessible and more straightforward for everyone around the world. Countries have their stock markets, and international brokers make it easier to invest across the globe. Modern investors can now choose from a wide range of investment products, including stocks, bonds, ETFs, mutual funds, commodities, futures, foreign currencies, and real estate, among others. Furthermore, the existence of online brokers made investing more accessible through cheaper commissions and trading fees.
+
+New technologies and developments will, no doubt, impact modern investing as we know it. The chapters of the history of investing continues to be written.
+
+    \n\nsource: https://www.stockpile.com/theticker/the-fascinating-history-of-investing\n\n\n\n</string>
+
+
 </resources>
