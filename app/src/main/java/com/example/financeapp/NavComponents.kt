@@ -52,7 +52,8 @@ fun CalculatorPage(){
         modifier = Modifier
             .fillMaxWidth()
             .padding(12.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        Alignment.CenterHorizontally
     ){
         Text(text = "Compound Interest Calculator!\nWatch how your investment can grow.")
 
@@ -100,7 +101,7 @@ fun CalculatorPage(){
 
         Text("Compound Frequency")
 
-        val radioOptions = listOf("Daily", "Weekly", "Monthly", "Yearly")
+        val radioOptions = listOf("Daily", "Weekly", "Monthly", "Quarterly","Yearly")
         val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[3]) }
         var compoundPeriod = 0
         if (selectedOption.equals("Daily"))
@@ -109,6 +110,8 @@ fun CalculatorPage(){
             compoundPeriod= 52
         else if (selectedOption.equals("Monthly"))
             compoundPeriod = 12
+        else if (selectedOption.equals("Quarterly"))
+            compoundPeriod = 4
         else
             compoundPeriod = 1
 
@@ -146,7 +149,7 @@ fun CalculatorPage(){
         Text(text = "Your Projected total is: ")
         var total = remember { mutableStateOf(0.0) }
 
-        Text("$"+"%.2f".format(total.value))
+        Text(text= "$"+"%.2f".format(total.value), fontSize = 28.sp)
         Button(
             onClick = {
                 var principal: Int
@@ -160,6 +163,7 @@ fun CalculatorPage(){
                 //compound = Integer.parseInt(selectedOption)
 
 
+                //*** calculation***
                 finalAmt = principal *(Math.pow((1+((rates/100)/compoundPeriod)),
                     (compoundPeriod*years).toDouble()))
                 total.value = finalAmt
