@@ -4,7 +4,7 @@
     <string name="History1">\nHISTORY OF INVESTING\n\n
 
 According to historical accounts, investing can be traced back to the Code of Hammurabi, which was written around 1700 BCE in Mesopotamia (modern day Iraq). Historians argue that the historic code provided the framework for many of civilization’s essential laws, including the legal framework for investment. The law established a way to pledge collateral in exchange for investing in a project. In the code, the land was pledged as collateral, and anyone who broke their obligation was punished.
-While the Code of Hammurabi provided the foundational laws, most modern investing go back to 17th century Europe.
+While the Code of Hammurabi provided the foundational laws, most modern investing goes back to 17th century Europe.
 
 \n\nAMSTERDAMN STOCK EXCHANGE\n\n
 The Amsterdam Stock Exchange is regarded as the predecessor of modern investing. It is said to operate much like current stock exchanges, which connects potential investors with investment opportunities while also allowing people in business to communicate with willing investors. Furthermore, the structure of the Amsterdam Stock Exchange itself made investing more straightforward and standardized, paving the way for the modern stock exchange.
@@ -114,4 +114,50 @@ Shares of stock let investors participate in a company’s success via increases
 
 Holders of common stock enjoy voting rights at shareholders’ meetings. Holders of preferred stock don’t have voting rights but do receive preference over common shareholders in terms of the dividend payments.\n\n
     Source: Investopedia.com\n\n\n\n </string>
+
+
+    <string name="More1">
+\nWhat Does it Mean When a Trader Buys on Margin?\n\n
+
+Sometimes an investor needs to buy an asset by borrowing some balance from the broker. When an investor buys on margin it means that funds were transferred to the broker as payment for an asset. Then the trader uses these marginal securities in their account with the broker as securities.
+
+It is very similar to a loan from a bank. You are able to buy more stock than you would otherwise. In order to trade on margin, you need permission from your broker and your broker needs your consent.
+\n\nLeverage. What is it?\n\n
+
+Both leverage and margin trading constitute borrowing money from a broker. However, they are quite different. While margin trading is borrowing money to further invest in assets, leverage is when you take on debt.
+
+Leveraging is when you borrow capital when opening a position. It might be that traders want more exposure with minimal equity.
+\n\nHow Does it Work?\n\n
+
+Leverage is applied differently to margin trading. The broker applies leverage in multiples, that is multiplying the capital that is invested by trader. For example, Sage FX offers 1:500 leverage, multiplying the capital by 500 times. You can choose any amount of leverage, choosing to multiply twice, ten times or three hundred times depending on your requirement. You can apply this to both buying or selling positions.
+What Should you Keep in Mind when Trading on Leverage?
+
+It is important to always keep in mind that when using leverage,  profits may be multiplied but losses can be multiplied as well. So it is important to keep in mind certain factors when trading using leverage.
+
+        We will go into this in our next section.\n\n</string>
+    <string name="More2">\n\nWhen Should You Choose Margin and Leverage Trading?\n\n
+
+Margin trading and leverage sound pretty convenient no? They can give you a much-needed leg up in certain situations. This is definitely appealing when opportunities present themselves to you while trading on the live market and you are not willing to miss out!
+
+So, should you choose margin and leverage trading? As any well-seasoned trader knows, risk is a constant presence on the market (and admit it, it is part of the thrill and pleasure that trading can offer you). However, is trading on margin and choosing leverage worth the risk?
+
+It does depend on your particular situation and circumstances. We have prepared for you the below five questions you need to ask yourself when considering margin or leverage trading. They will help you better mitigate the risks that you can encounter while opting for these tools.
+\n\n1. Do You Predict Significant Profits?
+
+The potential profits that you predict must be bigger than the accumulated interest that you will pay the broker. The rates may be quite attractive but don’t forget that you can lose a chunk of your total profit towards margin.
+\n\n2. Can You Afford to Lose What You Are Risking?
+
+Imagine you lose the assets you are thinking of trading on margin. Would it cause considerable harm to your pocket? If the answer is yes, then do not go for this option. There are indeed more opportunities available to you when you trade on margin, given it can increase your returns. Make sure you think twice if the risk is considerable. In contrast, think of the bigger picture and whether risking this much will yield enough profits in the long-term
+\n\n3. Do You Have Cash Available to You Immediately?
+
+Brokers may sell your securities should there be a margin call. Make sure you have funds available to you so as to avoid this happening.\n\n</string>
+
+    <string name="More3">
+\n\n4. Do You Have a Stop-Loss on Your Account?
+
+\n\n5. Are You Prepared for the Market’s Volatility?
+
+The thrill of trading on a volatile market is undisputed. Not knowing where the market will take you with the endless possibilities it creates is an adrenaline-fueled activity that is unparalleled when compared to most jobs. However, make sure you are prepared for it. The more volatile the market is, the higher the risk it presents. These risks are highlighted further when you are trading on margin or with leverage.
+\n\nSource: Sagefx.com
+    \n\n\n\n</string>
 </resources>

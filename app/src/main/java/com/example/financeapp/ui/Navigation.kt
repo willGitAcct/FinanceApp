@@ -22,7 +22,7 @@ sealed class Screen(val title:String, val route: String, @DrawableRes val icons:
     object History2:Screen(title = "History", "history_route", icons = com.example.financeapp.R.drawable.ic_baseline_history_edu_24)
     object Basics:Screen(title = "Basics", "basics_route", icons = com.example.financeapp.R.drawable.ic_baseline_monetization_on_24)
     object Types:Screen(title = "Types", "types_route", icons = com.example.financeapp.R.drawable.ic_baseline_bar_chart_24)
-    object Advanced:Screen(title = "Advanced", "adv_route", icons = com.example.financeapp.R.drawable.ic_baseline_functions_24)
+    object Advanced:Screen(title = "Learn More", "adv_route", icons = com.example.financeapp.R.drawable.ic_baseline_functions_24)
 
 }
 
