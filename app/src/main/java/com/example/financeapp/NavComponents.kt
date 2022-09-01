@@ -213,36 +213,38 @@ fun LearningPage(){
 
 @Composable
 fun History(){
-
         Column(Modifier.verticalScroll(rememberScrollState())
             ){
-
             Text(text= stringResource(R.string.History1), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
-            Image(painter = painterResource(id = R.drawable.amsterdam), contentDescription =null , Modifier.align(Alignment.CenterHorizontally))
+            Image(painter = painterResource(id = R.drawable.amsterdam), contentDescription =null , Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(), contentScale = ContentScale.FillWidth)
             Text(text = stringResource(id = R.string.History2), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
-
         }
-
 }
 
 @Composable
 fun Basics(){
-    Box(modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center){
-        Text(text = "Bascs")
+    Column(Modifier.verticalScroll(rememberScrollState())){
+        Text(text= stringResource(R.string.Basics1), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+        Image(painter = painterResource(id = R.drawable.stockbond), contentDescription =null , Modifier.align(Alignment.CenterHorizontally), contentScale = ContentScale.Fit)
+        Text(text = stringResource(id = R.string.Basics2), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+        Image(painter = painterResource(id = R.drawable.diversification), contentDescription =null , Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(), contentScale = ContentScale.FillWidth)
+        Text(text = stringResource(id = R.string.Basics3), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+
     }
 }
 @Composable
 fun Types(){
-    Box(modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center){
-        Text(text = "Types")
+    Column(Modifier.verticalScroll(rememberScrollState())){
+        Text(text= stringResource(R.string.History1), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+        Image(painter = painterResource(id = R.drawable.amsterdam), contentDescription =null , Modifier.align(Alignment.CenterHorizontally))
+        Text(text = stringResource(id = R.string.History2), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
     }
 }
 @Composable
 fun Advanced(){
-    Box(modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center){
-        Text(text = "Advanced concepts")
+    Column(Modifier.verticalScroll(rememberScrollState())){
+        Text(text= stringResource(R.string.History1), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+        Image(painter = painterResource(id = R.drawable.amsterdam), contentDescription =null , Modifier.align(Alignment.CenterHorizontally))
+        Text(text = stringResource(id = R.string.History2), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FinanceApp</string>
 
-    <string name="History1">\nHISTORY OF INVESTING\n
+    <string name="History1">\nHISTORY OF INVESTING\n\n
 
 According to historical accounts, investing can be traced back to the Code of Hammurabi, which was written around 1700 BCE in Mesopotamia (modern day Iraq). Historians argue that the historic code provided the framework for many of civilization’s essential laws, including the legal framework for investment. The law established a way to pledge collateral in exchange for investing in a project. In the code, the land was pledged as collateral, and anyone who broke their obligation was punished.
 While the Code of Hammurabi provided the foundational laws, most modern investing go back to 17th century Europe.
@@ -27,4 +27,57 @@ New technologies and developments will, no doubt, impact modern investing as we 
     \n\nsource: https://www.stockpile.com/theticker/the-fascinating-history-of-investing\n\n\n\n</string>
 
 
+
+    <string name="Basics1">\nDon’t Be Intimidated By Jargon\n\n
+
+Don’t worry if you can’t understand the experts in the financial media right away. Much of what they say is jargon that is actually less complicated than it sounds. Don’t hesitate to ask questions; when it comes to your money, the only dumb question is the one you don’t ask. Don’t wait to invest until you feel you know everything.
+
+
+\n\nUnderstand Stocks and Bonds\n\n
+
+Almost every portfolio contains one or both of these kinds of assets.
+
+If you buy stock in a company, you are literally buying a share of the company’s earnings. You become an owner, or shareholder, of the company. As such, you take a stake in the company’s future; you are said to have equity in the company. If the company prospers, there’s no limit to how much your share can increase in value. If the company fails, you can lose every dollar of your investment.
+
+If you buy bonds, you’re lending money to the company (or governmental body) that issued the bonds. You become a creditor, not an owner, of the bond issuer. The bond is in effect the issuer’s IOU. You can lose the amount of the loan (your investment) if the company or governmental body fails, but the risk of loss to creditors (bondholders) is generally less than the risk for owners (shareholders). This is because, to stay in business and continue to finance its growth, a company must maintain as good a credit rating as possible, so creditors will usually pay on time if there is any way at all to do so. In addition, the law favors a company’s bondholders over its shareholders if it goes bankrupt.
+
+Stocks are often referred to as equity investments, while bonds are considered debt instruments or income investments. A mutual fund may invest in stocks, bonds, or a combination.
+
+Note:Before investing in a mutual fund, carefully consider its investment objectives, risks, fees, and expenses, which can be found in the prospectus available from the fund. Read it carefully before investing.
+ \n</string>
+    <string name="Basics2">\nDon’t Put All Your Eggs In One Basket\n\n
+
+This is one of the most important of all investment principles, as well as the most familiar and sensible.
+
+Consider including several different types of investments in your portfolio. Examples of investment types (sometimes called asset classes) include stocks, bonds, commodities, art, and precious metals. Cash also is considered an asset class, and includes not only currency but cash alternatives such as money market instruments, (for example, very short-term loans). Individual asset classes are often further broken down according to more precise investment characteristics (e.g., stocks of small companies, stocks of large companies, bonds issued by cities, or bonds issued by the U.S. Treasury).
+
+Investment classes often rise and fall at different rates and times. Ideally, in a diversified portfolio of investments, if some are losing value during a particular period, others will be gaining value at the same time. The gainers may help offset the losers, which can help minimize the impact of loss from a single type of investment. The goal is to find the right balance of different assets for your portfolio given your investing goals, risk tolerance and time horizon. This process is called asset allocation.
+
+Within each class you choose, consider diversifying further among several individual investment options within that class. For example, if you’ve decided to invest in the drug industry but are concerned about putting your entire investment into a single company, you could make smaller investments in Company A, Company B, and Company C, rather than put all your chips on one of them. Diversification alone can’t guarantee a profit or ensure against the possibility of loss, but it can help you manage the types and level of risk you take.
+
+
+
+\n\nRecognize The Tradeoff Between An Investment’s Risk and Return\n\n
+
+For present purposes, we define risk as the possibility that you might lose money, or that your investments will produce lower returns than expected. Return, of course, is your reward for making the investment. Return can be measured by an increase in the value of your initial investment principal, by cash payments directly to you during the life of the investment, or by a combination of the two.
+
+There is a direct relationship between investment risk and return; the lowest-risk investments typically offer the lowest return at any given time (e.g., a federally guaranteed bank certificate of deposit). The highest-risk investments will generally offer the chance for the highest returns (e.g., stock in an Internet start-up company that may go from $12 per share to $150, then down to $3). A higher return is your potential reward for taking greater risk.
+
+Between the extremes, every investor searches to find a level of risk–and corresponding expected return–that he or she feels comfortable with. When someone proposes an investment with a high return and suggests that it’s risk-free, remember the old adage that “If something sounds too good to be true, it probably is.”
+    \n</string>
+<string name="Basics3">\nUnderstand The Difference Between Investing For Growth and Investing For Income\n\n
+
+As an investor, you face an immediate choice: Do you want growth in the value of your original investment over time, or is your goal to produce predictable, spendable current income–or a little of both?
+
+Consistent with this investor choice, investments are frequently classified or marketed as either growth or income oriented. U.S. Treasury bills, for example, provide regular interest payments, but the value of your original investment will typically be more stable than an investment in, for example, a new software company, which will typically produce no immediate income. New companies generally reinvest any income in the business to make it grow. However, if a company is successful, the value of your stake in the company should likewise grow over time; this is known as capital appreciation.
+
+There is no right or wrong answer to the “growth or income” question. Your decision should depend on your individual circumstances and needs (for example, your need, if any, for income today, or your need to accumulate a college fund you don’t plan to tap for 15 years). Also, each type may have its own role to play in your portfolio, for different reasons.
+
+\n\nUnderstand The Power Of Compounding On Your Investment Returns\n\n
+
+Compounding occurs when you “let your money ride.” When you reinvest your investment returns, you begin to earn a “return on the returns.”
+
+A simple example of compounding occurs with a bank certificate of deposit that is allowed to roll over and be reinvested each time it matures. Interest earned in one period becomes part of the investment itself during the next period, and earns interest in subsequent periods. In the early years of an investment, the benefit of compounding on overall return is not exciting. As the years go by, however, a “rolling snowball” effect kicks in, and compounding’s long-term boost to the value of your investment becomes dramatic.
+
+Source: Broadridge Investor Communication Solutions, Inc.</string>
 </resources>
