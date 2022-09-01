@@ -239,9 +239,12 @@ fun Basics(){
 @Composable
 fun Types(){
     Column(Modifier.verticalScroll(rememberScrollState())){
-        Text(text= stringResource(R.string.History1), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
-        Image(painter = painterResource(id = R.drawable.amsterdam), contentDescription =null , Modifier.align(Alignment.CenterHorizontally))
-        Text(text = stringResource(id = R.string.History2), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+        Text(text= stringResource(R.string.Types1), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+        Image(painter = painterResource(id = R.drawable.bonds), contentDescription =null , Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(), contentScale = ContentScale.FillWidth)
+        Text(text = stringResource(id = R.string.Types2), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+        Image(painter = painterResource(id = R.drawable.indexfund), contentDescription =null , Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(), contentScale = ContentScale.FillWidth)
+        Text(text = stringResource(id = R.string.Types3), fontFamily = FontFamily.Serif, textAlign = TextAlign.Center)
+
     }
 }
 @Composable

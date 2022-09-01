@@ -79,5 +79,39 @@ Compounding occurs when you “let your money ride.” When you reinvest your in
 
 A simple example of compounding occurs with a bank certificate of deposit that is allowed to roll over and be reinvested each time it matures. Interest earned in one period becomes part of the investment itself during the next period, and earns interest in subsequent periods. In the early years of an investment, the benefit of compounding on overall return is not exciting. As the years go by, however, a “rolling snowball” effect kicks in, and compounding’s long-term boost to the value of your investment becomes dramatic.
 
-Source: Broadridge Investor Communication Solutions, Inc.</string>
+\n\nSource: Broadridge Investor Communication Solutions, Inc.\n\n\n\n</string>
+
+
+    <string name="Types1"> \nCash\n\n
+
+A cash bank deposit is the simplest, most easily understandable investment asset—and the safest. It not only gives investors precise knowledge of the interest that they’ll earn but also guarantees that they’ll get their capital back.
+
+On the downside, the interest earned from cash socked away in a savings account seldom beats inflation. Certificates of deposit (CDs) are less liquid instruments, but they typically provide higher interest rates than those in savings accounts. However, the money put into a CD is locked up for a period of time (months to years), and there are potentially early withdrawal penalties involved.
+\n\nBonds\n\n
+
+A bond is a debt instrument representing a loan made by an investor to a borrower. A typical bond will involve either a corporation or a government agency, where the borrower will issue a fixed interest rate to the lender in exchange for using their capital. Bonds are commonplace in organizations that use them to finance operations, purchases, or other projects.
+
+Bond rates are essentially determined by interest rates. Due to this, they are heavily traded during periods of quantitative easing or when the Federal Reserve—or other central banks—raise interest rates.3
+ \n</string>
+    <string name="Types2">\n\nMutual Funds\n\n
+
+A mutual fund is a type of investment where more than one investor pools their money together to purchase securities. Mutual funds are not necessarily passive, as they are managed by portfolio managers who allocate and distribute the pooled investment into stocks, bonds, and other securities.4 Most mutual funds have a minimum investment of between $500 and $5,000, and many do not have any minimum at all. Even a relatively small investment provides exposure to as many as 100 different stocks contained within a given fund\'s portfolio.
+
+Mutual funds are sometimes designed to mimic underlying indexes such as the S and P 500 or the Dow Jones Industrial Average. There are also many mutual funds that are actively managed, meaning that they are updated by portfolio managers who carefully track and adjust their allocations within the fund. However, these funds generally have greater costs—such as yearly management fees and front-end charges—that can cut into an investor’s returns.
+
+Mutual funds are valued at the end of the trading day, and all buy and sell transactions are likewise executed after the market closes.
+
+Many investment specialists advise their clients to diversity into a wide range of securities rather than focusing on just a few stocks.
+
+\n\nExchange-Traded Funds (ETFs)\n\n
+
+Exchange-traded funds (ETFs) have become quite popular since their introduction back in the mid-1990s. ETFs are similar to mutual funds, but they trade throughout the day, on a stock exchange. In this way, they mirror the buy-and-sell behavior of stocks. This also means that their value can change drastically during the course of a trading day.
+
+        ETFs can track an underlying index such as the S and P 500 or any other basket of stocks with which the ETF issuer wants to underline a specific ETF. This can include anything from emerging markets to commodities, individual business sectors such as biotechnology or agriculture, and more. Due to the ease of trading and broad coverage, ETFs are extremely popular with investors.\n\n</string>
+<string name="Types3">\n\nStocks\n\n
+
+Shares of stock let investors participate in a company’s success via increases in the stock’s price and through dividends. Shareholders have a claim on the company’s assets in the event of liquidation (that is, the company going bankrupt) but do not own the assets.
+
+Holders of common stock enjoy voting rights at shareholders’ meetings. Holders of preferred stock don’t have voting rights but do receive preference over common shareholders in terms of the dividend payments.\n\n
+    Source: Investopedia.com\n\n\n\n </string>
 </resources>
