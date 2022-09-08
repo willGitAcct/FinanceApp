@@ -44,8 +44,8 @@ class MainActivity : ComponentActivity() {
 
             FinanceAppTheme {
               //SignInScreen()
-                //UsersApplication()
-                StockAppLaunch()
+                UsersApplication()
+                //StockAppLaunch()
               }
             }
         }
@@ -63,10 +63,3 @@ fun DefaultPreview() {
         UsersApplication()
     }
 }
-
-// TODO: - attach api!! find way to update user stock list.
-//  improve UI. Add a bank balance, and second table
-//  Fix fields (password, crash when empty, etc)
-//  maybe instead of news, add a 'learning' page(s) - definitions
-//
-//  also, user stories, and all the other stuff.

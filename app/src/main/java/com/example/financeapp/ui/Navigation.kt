@@ -40,7 +40,7 @@ fun BottomNavHost(navHostController: NavHostController){
             HomeScreen()
         }
         composable(route = Screen.Search.route){
-            LearningPage()
+            StockAppLaunch()
         }
         composable(route = Screen.Calculator.route){
             CalculatorPage()
