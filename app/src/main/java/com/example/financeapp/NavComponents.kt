@@ -202,7 +202,7 @@ fun CalculatorPage(){
 @Preview
 @Composable
 fun LearningPage(){
-    val listItems = listOf(Screen.History2, Screen.Basics, Screen.Types, Screen.Advanced)
+    val listItems = listOf(Screen.History2, Screen.Basics, Screen.Types, Screen.Advanced)//
     val navController = rememberNavController()
     Box(modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center){

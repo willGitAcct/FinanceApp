@@ -22,15 +22,18 @@ import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.ui.BottomNavHost
 import com.example.financeapp.ui.BottomNavScreen
 import com.example.financeapp.ui.Screen
+import com.example.financeapp.ui.StockAppLaunch
 import com.example.financeapp.ui.theme.FinanceAppTheme
 import com.example.financeapp.ui.theme.SignInScreen
 import com.example.financeapp.ui.theme.UsersApplication
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
 private lateinit var auth: FirebaseAuth
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,16 +44,13 @@ class MainActivity : ComponentActivity() {
 
             FinanceAppTheme {
               //SignInScreen()
-                UsersApplication()
-//                Scaffold(bottomBar = {BottomNavScreen(navController = navController, item = listItems)
-//                }) {
-//                    BottomNavHost(navHostController = navController)
-//
-//                }
+                //UsersApplication()
+                StockAppLaunch()
+              }
             }
         }
     }
-}
+
 
 
 
