@@ -9,10 +9,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.financeapp.*
+import com.example.financeapp.presentation.company_details.StockInfoScreen
+import com.example.financeapp.presentation.company_list.StockListingsScreen
 
 sealed class Screen(val title:String, val route: String, @DrawableRes val icons: Int){
     object Home:Screen(title = "Home", "home_page", icons = com.example.financeapp.R.drawable.ic_baseline_home_24)
@@ -114,4 +119,38 @@ fun BottomNavScreen(navController: NavController, item:List<Screen>){
                 selectedContentColor = MaterialTheme.colors.secondary)
         }
     }
+}
+
+
+@Composable
+fun StockAppLaunch(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "home_page") {
+//        composable("sign_in"){
+//            SignInScreen(navController)
+//        }
+        composable("home_page"){
+            StockListingsScreen(navController)
+        }
+        composable( "stock_info/{symbol}",
+            arguments = listOf(
+                navArgument("symbol") {
+                    type = NavType.StringType
+                }))
+        {
+            StockInfoScreen(it.arguments!!.getString("symbol"))
+
+        }
+
+        composable("test_page"){
+            Test()
+        }
+
+
+    }
+}
+
+@Composable
+fun Test(){
+    Text(text = "boom")
 }
