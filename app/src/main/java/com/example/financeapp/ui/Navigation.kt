@@ -18,6 +18,8 @@ sealed class Screen(val title:String, val route: String, @DrawableRes val icons:
     object Home:Screen(title = "Home", "home_page", icons = com.example.financeapp.R.drawable.ic_baseline_home_24)
     object Calculator:Screen(title = "Calculator", "calc_route", icons = com.example.financeapp.R.drawable.ic_baseline_calculate_24)
     object History:Screen(title = "Learning", "learning_route", icons = com.example.financeapp.R.drawable.ic_baseline_history_edu_24)
+    object Search:Screen(title = "Search", "search_route", icons = com.example.financeapp.R.drawable.ic_baseline_developer_board_24)
+
 
     object History2:Screen(title = "History", "history_route", icons = com.example.financeapp.R.drawable.ic_baseline_history_edu_24)
     object Basics:Screen(title = "Basics", "basics_route", icons = com.example.financeapp.R.drawable.ic_baseline_monetization_on_24)
@@ -32,12 +34,16 @@ fun BottomNavHost(navHostController: NavHostController){
         composable(route = Screen.Home.route){
             HomeScreen()
         }
+        composable(route = Screen.Search.route){
+            LearningPage()
+        }
         composable(route = Screen.Calculator.route){
             CalculatorPage()
         }
         composable(route = Screen.History.route){
             LearningPage()
         }
+
     }
 }
 
