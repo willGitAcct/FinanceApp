@@ -81,31 +81,7 @@ fun navBar() {
 
         Button(
             onClick = {
-                //println(dbRef.child(uid).child("favourites").get().toString())
-                //"com.google.android.gms.tasks.zzw@9a01f19"
-                // stock.add()
 
-                //this gets the value of the user's favourites list, before adding to it later when the button is clicked
-//        dbRef.child(uid).child("favourites").addValueEventListener(object: ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                val stocks: String? = snapshot.getValue(String::class.java)
-//                println(stocks + "1")
-//                if (stocks != null) {
-//                    stock = stocks
-//                    println(stock+"2")
-//                }
-//                stock+= searchState.value.text+","
-//                //stock.add(searchState.value.text)
-//                dbRef.child(uid).child("favourites").setValue(stock)
-//                println(stock + "3")
-//
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
                 dbRef.child(uid).child("favourites").get().addOnSuccessListener {
                     val stocks: String = it.getValue(String::class.java).toString()
                     println(stocks + "1")

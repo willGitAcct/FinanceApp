@@ -23,7 +23,7 @@ import kotlin.math.roundToInt
 fun StocksChart(
     intradayInfosChart: List<IntradayInfo> = emptyList(),
     modifier: Modifier = Modifier,
-    graphColor: Color = Color.Magenta
+    graphColor: Color = Color.Cyan
 ) {
 
     val spacing = 100f
