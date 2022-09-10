@@ -7,6 +7,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
@@ -50,13 +51,21 @@ fun navBar() {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Title("Home Screen")
-            SearchField()
+            Title("Welcome!")
+            HomePlaceholder()
+            //SearchField()
         }
 
 
     }
-
+    @Composable
+    fun HomePlaceholder(){
+        Text(text = "Enjoy the app!\nNavigate using the bar on the bottom of the screen.\n" +
+                "\nYou can browse or search for a specific stock using the search page.\n" +
+                "\nYou may use the investment calculator to simulate investment performance.\n" +
+                "\nFinally, check out the learning page to get educated about investment topics! "
+        )
+    }
     @Composable
     fun SearchField() {
         val searchState = remember { mutableStateOf(TextFieldValue()) }
@@ -77,7 +86,7 @@ fun navBar() {
             shape = RoundedCornerShape(8.dp),
         )
 
-        Text("Results: " + searchState.value.text)
+        //Text("Results: " + searchState.value.text)
 
         Button(
             onClick = {
@@ -101,7 +110,6 @@ fun navBar() {
                 //stock = dbRef.child(uid).child("favourites").getValue
 
 
-                //correctly finds the favourites category in the db
             },
             modifier = Modifier
                 .fillMaxWidth(),

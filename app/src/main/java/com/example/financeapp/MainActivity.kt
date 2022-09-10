@@ -43,6 +43,8 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             FinanceAppTheme {
+                //sign in screen commented out for testing as it was painful to have to log in
+                //every time I made a small chagne to the app
               //SignInScreen()
                 UsersApplication()
                 //StockAppLaunch()
