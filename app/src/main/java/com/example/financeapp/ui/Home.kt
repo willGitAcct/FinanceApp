@@ -1,6 +1,9 @@
 package com.example.financeapp
 
+import android.content.ContentValues
 import android.util.Log
+import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -10,6 +13,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,7 +31,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 //val user = Firebase.auth.currentUser
-@Preview(showSystemUi = true)
+//@Preview(showSystemUi = true)
 @Composable
 fun navBar() {
     val listItems = listOf(Screen.Search, Screen.Calculator, Screen.History,Screen.Settings )
@@ -42,29 +48,123 @@ fun navBar() {
 
 
 
+//    @Composable
+//    fun HomeScreen() {
+//
+//        Column(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(16.dp),
+//            verticalArrangement = Arrangement.spacedBy(12.dp)
+//        ) {
+//            Title("Welcome!")
+//            SettingsPage()
+//            //SearchField()
+//        }
+//
+//
+//    }
+    @Preview
     @Composable
-    fun HomeScreen() {
+    fun SettingsPage(){
+    val mContext = LocalContext.current
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+    val auth = FirebaseAuth.getInstance()
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user!!.uid
+    Box(modifier = Modifier.fillMaxWidth()) {
+        Image(
+            painterResource(id = R.drawable.stonks),
+            contentDescription = "",
+            contentScale = ContentScale.FillHeight, // or some other scale
+            modifier = Modifier.fillMaxSize(),
+            alpha = 0.6f
+        )
+        Column(horizontalAlignment = Alignment.CenterHorizontally,modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Title("Welcome!")
-            HomePlaceholder()
-            //SearchField()
+            
+            Spacer(modifier = Modifier.padding(100.dp))
+            Button(
+                onClick = {
+                    auth.sendPasswordResetEmail(user.email.toString()).addOnCompleteListener { task ->
+                        if (task.isSuccessful){
+                            Toast.makeText(mContext, "Password Reset Link Sent to Email", Toast.LENGTH_LONG).show()                        }
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color(0xFF4974a5),
+                    contentColor = Color.White
+                )
+            ) {
+                Text(
+                    text = "Reset Password"
+                )
+
+            }
+
+            Button(
+                onClick = {
+
+                },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color(0xFF4974a5),
+                    contentColor = Color.White
+                )
+            ) {
+                Text(
+                    text = "Feedback"
+                )
+
+            }
+
+            Button(
+                onClick = {
+
+                },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color(0xFF4974a5),
+                    contentColor = Color.White
+                )
+            ) {
+                Text(
+                    text = "About"
+                )
+
+            }
+
+            Button(
+                onClick = {
+
+                },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color(0xFF4974a5),
+                    contentColor = Color.White
+                )
+            ) {
+                Text(
+                    text = "Logout"
+                )
+
+            }
+
+
         }
-
-
     }
-    @Composable
-    fun HomePlaceholder(){
-        Text(text = "Enjoy the app!\nNavigate using the bar on the bottom of the screen.\n" +
-                "\nYou can browse or search for a specific stock using the search page.\n" +
-                "\nYou may use the investment calculator to simulate investment performance.\n" +
-                "\nFinally, check out the learning page to get educated about investment topics! "
-        )
     }
     @Composable
     fun SearchField() {

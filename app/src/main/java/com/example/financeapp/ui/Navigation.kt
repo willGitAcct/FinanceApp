@@ -47,7 +47,8 @@ fun BottomNavHost(navHostController: NavHostController){
             LearningPage()
         }
         composable(route = Screen.Settings.route){
-            HomeScreen()
+            //HomeScreen()
+            SettingsPage()
         }
 
     }
