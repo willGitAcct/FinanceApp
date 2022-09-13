@@ -20,7 +20,7 @@ import com.example.financeapp.presentation.company_details.StockInfoScreen
 import com.example.financeapp.presentation.company_list.StockListingsScreen
 
 sealed class Screen(val title:String, val route: String, @DrawableRes val icons: Int){
-    object Home:Screen(title = "Home", "home_page", icons = com.example.financeapp.R.drawable.ic_baseline_home_24)
+    object Settings:Screen(title = "Settings", "settings_page", icons = com.example.financeapp.R.drawable.ic_baseline_settings_24)
     object Calculator:Screen(title = "Calculator", "calc_route", icons = com.example.financeapp.R.drawable.ic_baseline_calculate_24)
     object History:Screen(title = "Learning", "learning_route", icons = com.example.financeapp.R.drawable.ic_baseline_history_edu_24)
     object Search:Screen(title = "Search", "search_route", icons = com.example.financeapp.R.drawable.ic_baseline_developer_board_24)
@@ -35,10 +35,8 @@ sealed class Screen(val title:String, val route: String, @DrawableRes val icons:
 
 @Composable
 fun BottomNavHost(navHostController: NavHostController){
-    NavHost(navController = navHostController, startDestination = Screen.Home.route){
-        composable(route = Screen.Home.route){
-            HomeScreen()
-        }
+    NavHost(navController = navHostController, startDestination = Screen.Search.route){
+
         composable(route = Screen.Search.route){
             StockAppLaunch()
         }
@@ -47,6 +45,9 @@ fun BottomNavHost(navHostController: NavHostController){
         }
         composable(route = Screen.History.route){
             LearningPage()
+        }
+        composable(route = Screen.Settings.route){
+            HomeScreen()
         }
 
     }

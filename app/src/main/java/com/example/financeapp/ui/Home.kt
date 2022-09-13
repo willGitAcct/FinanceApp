@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener
 @Preview(showSystemUi = true)
 @Composable
 fun navBar() {
-    val listItems = listOf(Screen.Home, Screen.Search, Screen.Calculator, Screen.History)
+    val listItems = listOf(Screen.Search, Screen.Calculator, Screen.History,Screen.Settings )
     val navController = rememberNavController()
     Scaffold(bottomBar = {
         BottomNavScreen(navController = navController, item = listItems)
