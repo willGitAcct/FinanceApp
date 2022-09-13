@@ -2,6 +2,7 @@ package com.example.financeapp.ui.theme
 
 import android.content.ContentValues
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,8 +14,11 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -29,6 +33,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.HomeScreen
+import com.example.financeapp.R
 import com.example.financeapp.navBar
 import com.example.financeapp.ui.SignUpScreen
 import com.google.firebase.auth.FirebaseAuth
@@ -43,59 +48,75 @@ private lateinit var auth: FirebaseAuth
 fun SignInScreen(navController: NavController) {
     auth = Firebase.auth
 
+    Box(modifier = Modifier.fillMaxWidth()) {
+        Image(
+            painterResource(id = R.drawable.stonks),
+            contentDescription = "",
+            contentScale = ContentScale.FillHeight, // or some other scale
+            modifier = Modifier.fillMaxSize()
+        )
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ){
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        //Alignment.CenterHorizontally,
+        Alignment.CenterHorizontally
+
+    ) {
+        Spacer(modifier = Modifier.padding(52.dp))
         Title("Welcome!")
 
         //for email field
-        val emailState = remember{ mutableStateOf(TextFieldValue()) }
+        val emailState = remember { mutableStateOf(TextFieldValue()) }
 
         TextField(
             modifier = Modifier.fillMaxWidth(),
             value = emailState.value,
-            onValueChange = {emailState.value = it},
-            label = {Text(text= "Email")},
+            onValueChange = { emailState.value = it },
+            label = { Text(text = "Email") },
             colors = TextFieldDefaults.textFieldColors(
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent),
+                backgroundColor = MaterialTheme.colors.surface.copy(alpha = 0.9f)
+                //focusedIndicatorColor = Color.Transparent,
+                //unfocusedIndicatorColor = Color.Transparent
+            ),
             shape = RoundedCornerShape(8.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
         )
         //Email()
         //Password()
         //for pw field
-        val pwState = remember{ mutableStateOf(TextFieldValue()) }
-        val showPwState = remember { mutableStateOf(false)}
+        val pwState = remember { mutableStateOf(TextFieldValue()) }
+        val showPwState = remember { mutableStateOf(false) }
         TextField(
             modifier = Modifier.fillMaxWidth(),
             value = pwState.value,
-            onValueChange = {pwState.value = it},
-            label = {Text(text= "Password")},
+            onValueChange = { pwState.value = it },
+            label = { Text(text = "Password") },
             colors = TextFieldDefaults.textFieldColors(
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
+                backgroundColor = MaterialTheme.colors.surface.copy(alpha = 0.9f)
             ),
             shape = RoundedCornerShape(8.dp),
             visualTransformation = if (showPwState.value) {
                 VisualTransformation.None
-            } else {PasswordVisualTransformation()},
+            } else {
+                PasswordVisualTransformation()
+            },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = {
-                if(showPwState.value){
+                if (showPwState.value) {
                     IconButton(onClick = { showPwState.value = false }) {
                         Icon(
                             imageVector = Icons.Filled.Visibility,
-                            contentDescription = "hide pw")
+                            contentDescription = "hide pw"
+                        )
                     }
                 } else {
                     IconButton(onClick = { showPwState.value = true }) {
                         Icon(
                             imageVector = Icons.Filled.VisibilityOff,
-                            contentDescription = "show pw")
+                            contentDescription = "show pw"
+                        )
                     }
 
                 }
@@ -105,35 +126,45 @@ fun SignInScreen(navController: NavController) {
         //SignInBtn()
         //for sign in
         Button(
-            onClick = { auth.signInWithEmailAndPassword(emailState.value.text, pwState.value.text)
-                .addOnCompleteListener { if(it.isSuccessful){
-                    navController.navigate("home_page")
-                    Log.d(ContentValues.TAG,"success! check console")
-                } else {
-                    Log.d(ContentValues.TAG,"Failure.....",it.exception)
+            onClick = {
+                auth.signInWithEmailAndPassword(emailState.value.text, pwState.value.text)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            navController.navigate("home_page")
+                            Log.d(ContentValues.TAG, "success! check console")
+                        } else {
+                            Log.d(ContentValues.TAG, "Failure.....", it.exception)
 
-                }
-                }},
+                        }
+                    }
+            },
             modifier = Modifier
                 .fillMaxWidth(),
             contentPadding = PaddingValues(16.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color( 0xFF4974a5),
+                backgroundColor = Color(0xFF4974a5),
                 contentColor = Color.White
-            ) ) {
+            )
+        ) {
             Text(
                 text = "Sign In"
             )
 
         }
 
-        TextButton(onClick = { navController.navigate("sign_up")}) {
-            Text(text = "Click here to register",
-                style = TextStyle(textDecoration = TextDecoration.Underline))
+        TextButton(onClick = { navController.navigate("sign_up") }) {
+            Text(
+                text = "Click here to register",
+                style = TextStyle(textDecoration = TextDecoration.Underline),
+                color = Color.White
+            )
         }
 
     }
+
+    }
 }
+
 
 //for navigating to the other page----------------------------------------------------------------------
 @Preview
@@ -253,5 +284,6 @@ fun UsersApplication(){
 fun Title(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.h3
+        style = MaterialTheme.typography.h3,
+        color = Color.White
     )}
