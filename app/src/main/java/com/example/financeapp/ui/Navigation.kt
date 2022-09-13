@@ -144,15 +144,8 @@ fun StockAppLaunch(){
 
         }
 
-        composable("test_page"){
-            Test()
-        }
 
 
     }
 }
 
-@Composable
-fun Test(){
-    Text(text = "boom")
-}

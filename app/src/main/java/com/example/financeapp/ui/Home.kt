@@ -1,6 +1,7 @@
 package com.example.financeapp
 
-import android.content.ContentValues
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -17,18 +18,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.compose.rememberNavController
 import com.example.financeapp.ui.BottomNavHost
 import com.example.financeapp.ui.BottomNavScreen
 import com.example.financeapp.ui.Screen
-import com.example.financeapp.ui.theme.Title
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+
 
 //val user = Firebase.auth.currentUser
 //@Preview(showSystemUi = true)
@@ -64,107 +62,105 @@ fun navBar() {
 //
 //
 //    }
-    @Preview
+    //@Preview
     @Composable
-    fun SettingsPage(){
-    val mContext = LocalContext.current
+        fun SettingsPage(){
+            val mContext = LocalContext.current
+            val auth = FirebaseAuth.getInstance()
+            val user = FirebaseAuth.getInstance().currentUser
+            val uid = user!!.uid
 
-    val auth = FirebaseAuth.getInstance()
-        val user = FirebaseAuth.getInstance().currentUser
-        val uid = user!!.uid
-    Box(modifier = Modifier.fillMaxWidth()) {
-        Image(
-            painterResource(id = R.drawable.stonks),
-            contentDescription = "",
-            contentScale = ContentScale.FillHeight, // or some other scale
-            modifier = Modifier.fillMaxSize(),
-            alpha = 0.6f
-        )
-        Column(horizontalAlignment = Alignment.CenterHorizontally,modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            
-            Spacer(modifier = Modifier.padding(100.dp))
-            Button(
-                onClick = {
-                    auth.sendPasswordResetEmail(user.email.toString()).addOnCompleteListener { task ->
-                        if (task.isSuccessful){
-                            Toast.makeText(mContext, "Password Reset Link Sent to Email", Toast.LENGTH_LONG).show()                        }
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color(0xFF4974a5),
-                    contentColor = Color.White
-                )
+
+
+
+        Box(modifier = Modifier.fillMaxWidth()) {
+            Image(
+                painterResource(id = R.drawable.stonks),
+                contentDescription = "",
+                contentScale = ContentScale.FillHeight, // or some other scale
+                modifier = Modifier.fillMaxSize(),
+                alpha = 0.6f
+            )
+            Column(horizontalAlignment = Alignment.CenterHorizontally,modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text(
-                    text = "Reset Password"
-                )
+
+                Spacer(modifier = Modifier.padding(100.dp))
+                Button(
+                    onClick = {
+                        auth.sendPasswordResetEmail(user.email.toString()).addOnCompleteListener { task ->
+                            if (task.isSuccessful){
+                                Toast.makeText(mContext, "Password Reset Link Sent to Email", Toast.LENGTH_LONG).show()                        }
+                        }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    contentPadding = PaddingValues(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(0xFF4974a5),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text(
+                        text = "Reset Password"
+                    )
+
+                }
+
+                Button(
+                    onClick = {
+                        val i = Intent(Intent.ACTION_SEND)
+                        i.type = "message/rfc822"
+                        i.putExtra(Intent.EXTRA_EMAIL, arrayOf("willplaydevacct@gmail.com"))
+//                        i.putExtra(Intent.EXTRA_SUBJECT, "subject of email")
+//                        i.putExtra(Intent.EXTRA_TEXT, "body of email")
+                        try {
+                            mContext.startActivity(Intent.createChooser(i,"Send email"))
+                        } catch (ex: ActivityNotFoundException) {
+                            Toast.makeText(
+                                mContext,
+                                "There are no email clients installed.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    contentPadding = PaddingValues(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(0xFF4974a5),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text(
+                        text = "Feedback"
+                    )
+
+                }
+
+                Button(
+                    onClick = {
+
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    contentPadding = PaddingValues(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(0xFF4974a5),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text(
+                        text = "About"
+                    )
+
+                }
+
 
             }
-
-            Button(
-                onClick = {
-
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color(0xFF4974a5),
-                    contentColor = Color.White
-                )
-            ) {
-                Text(
-                    text = "Feedback"
-                )
-
-            }
-
-            Button(
-                onClick = {
-
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color(0xFF4974a5),
-                    contentColor = Color.White
-                )
-            ) {
-                Text(
-                    text = "About"
-                )
-
-            }
-
-            Button(
-                onClick = {
-
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color(0xFF4974a5),
-                    contentColor = Color.White
-                )
-            ) {
-                Text(
-                    text = "Logout"
-                )
-
-            }
-
-
         }
-    }
     }
     @Composable
     fun SearchField() {
