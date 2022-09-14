@@ -134,29 +134,40 @@ fun SignUpScreen(navController: NavController) {
             )
             Button(
                 onClick = {
-                    auth.createUserWithEmailAndPassword(emailState.value.text, pwState.value.text)
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                //navController.navigate("home_page")
-                                Log.d(TAG, "success! check console")
-                                val user = User(emailState.value.text, formState.value.text, "")
-                                FirebaseAuth.getInstance().currentUser?.let { it1 ->
-                                    FirebaseDatabase.getInstance().getReference("User")
-                                        .child(it1.uid).setValue(user)
+                    try {
+                        auth.createUserWithEmailAndPassword(
+                            emailState.value.text,
+                            pwState.value.text
+                        )
+                            .addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    //navController.navigate("home_page")
+                                    Log.d(TAG, "success! check console")
+                                    val user = User(emailState.value.text, formState.value.text, "")
+                                    FirebaseAuth.getInstance().currentUser?.let { it1 ->
+                                        FirebaseDatabase.getInstance().getReference("User")
+                                            .child(it1.uid).setValue(user)
+                                    }
+                                    Toast.makeText(
+                                        context,
+                                        "Registered Successfully; logging in..",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    navController.navigate("home_page")
+
+                                } else {
+                                    Log.d(TAG, "Failure.....", it.exception)
+
                                 }
-                                Toast.makeText(
-                                    context,
-                                    "Registered Successfully; logging in..",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-
-                                navController.navigate("home_page")
-
-                            } else {
-                                Log.d(TAG, "Failure.....", it.exception)
-
                             }
-                        }
+                    } catch (e:Exception){
+                        Toast.makeText(
+                            context,
+                            "Error; make sure fields are entered",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -174,4 +185,5 @@ fun SignUpScreen(navController: NavController) {
         }
     }
 }
+
 
