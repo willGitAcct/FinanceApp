@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         // Initialize Firebase Auth
         auth = Firebase.auth
-
         setContent {
 
             FinanceAppTheme {

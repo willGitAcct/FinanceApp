@@ -18,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -150,11 +152,13 @@ fun SignInScreen(navController: NavController) {
 
         }
 
-        TextButton(onClick = { navController.navigate("sign_up") }) {
+        TextButton(onClick = { navController.navigate("sign_up") },
+            modifier = Modifier.semantics { contentDescription = "Register" }) {
             Text(
                 text = "Click here to register",
                 style = TextStyle(textDecoration = TextDecoration.Underline),
-                color = Color.White
+                color = Color.White,
+
             )
         }
 
@@ -181,102 +185,6 @@ fun UsersApplication(){
         }
     }
 }
-//---------------------------------------------------------------------------------------------------
-//
-//@Composable
-//fun SignInBtn() {
-//
-//  Button(
-//      onClick = { auth.signInWithEmailAndPassword(emailState.value) },
-//      modifier = Modifier
-//          .fillMaxWidth(),
-//      contentPadding = PaddingValues(16.dp),
-//      colors = ButtonDefaults.buttonColors(
-//          backgroundColor = Color( 0xFF4974a5),
-//          contentColor = Color.White
-//      ) ) {
-//      Text(
-//          text = "Sign In"
-//      )
-//
-//  }
-//}
-//
-//@Composable
-//fun Email() {
-//    val emailState = remember{ mutableStateOf(TextFieldValue()) }
-//
-//    TextField(
-//        modifier = Modifier.fillMaxWidth(),
-//        value = emailState.value,
-//        onValueChange = {emailState.value = it},
-//        label = {Text(text= "Email")},
-//        colors = TextFieldDefaults.textFieldColors(
-//            focusedIndicatorColor = Color.Transparent,
-//            unfocusedIndicatorColor = Color.Transparent),
-//        shape = RoundedCornerShape(8.dp),
-//        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
-//    )
-//}
-//
-//
-////template for a field composable with the same presets as the others
-////
-////@Composable
-//
-////@Composable
-////fun FormField(label: String) {
-////    val formState = remember{ mutableStateOf(TextFieldValue()) }
-////
-////    TextField(
-////        modifier = Modifier.fillMaxWidth(),
-////        value = formState.value,
-////        onValueChange = {formState.value = it},
-////        label = {Text(text= label)},
-////        colors = TextFieldDefaults.textFieldColors(
-////            focusedIndicatorColor = Color.Transparent,
-////            unfocusedIndicatorColor = Color.Transparent),
-////        shape = RoundedCornerShape(8.dp),
-////        //if needed
-////        //keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
-////    )
-////}
-//
-//@Composable
-//fun Password() {
-//    val pwState = remember{ mutableStateOf(TextFieldValue()) }
-//    val showPwState = remember { mutableStateOf(false)}
-//    TextField(
-//        modifier = Modifier.fillMaxWidth(),
-//        value = pwState.value,
-//        onValueChange = {pwState.value = it},
-//        label = {Text(text= "Password")},
-//        colors = TextFieldDefaults.textFieldColors(
-//            focusedIndicatorColor = Color.Transparent,
-//            unfocusedIndicatorColor = Color.Transparent
-//        ),
-//        shape = RoundedCornerShape(8.dp),
-//        visualTransformation = if (showPwState.value) {
-//            VisualTransformation.None
-//        } else {PasswordVisualTransformation()},
-//        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-//        trailingIcon = {
-//            if(showPwState.value){
-//                IconButton(onClick = { showPwState.value = false }) {
-//                    Icon(
-//                        imageVector = Icons.Filled.Visibility,
-//                        contentDescription = "hide pw")
-//                }
-//            } else {
-//                IconButton(onClick = { showPwState.value = true }) {
-//                    Icon(
-//                        imageVector = Icons.Filled.VisibilityOff,
-//                        contentDescription = "show pw")
-//                }
-//
-//            }
-//        }
-//        )}
 
 @Composable
 fun Title(text: String) {

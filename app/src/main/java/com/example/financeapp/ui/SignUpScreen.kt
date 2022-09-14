@@ -20,6 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
@@ -51,7 +53,7 @@ fun SignUpScreen(navController: NavController) {
             painterResource(id = R.drawable.stonks),
             contentDescription = "",
             contentScale = ContentScale.FillHeight, // or some other scale
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().semantics { contentDescription = "stonk" }
         )
         Column(
             modifier = Modifier
@@ -68,7 +70,7 @@ fun SignUpScreen(navController: NavController) {
             val pwState = remember { mutableStateOf(TextFieldValue()) }
 
             TextField(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().semantics { contentDescription="EmailInput" },
                 value = emailState.value,
                 onValueChange = { emailState.value = it },
                 label = { Text(text = "Email") },
@@ -157,7 +159,8 @@ fun SignUpScreen(navController: NavController) {
                         }
                 },
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .semantics { contentDescription="SignUp" },
                 contentPadding = PaddingValues(16.dp),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color(0xFF4974a5),
