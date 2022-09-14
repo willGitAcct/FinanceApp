@@ -1,4 +1,4 @@
-package com.example.financeapp
+package com.example.financeapp.ui
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -8,9 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,11 +17,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
+//import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.compose.rememberNavController
-import com.example.financeapp.ui.BottomNavHost
-import com.example.financeapp.ui.BottomNavScreen
-import com.example.financeapp.ui.Screen
+import com.example.financeapp.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -46,22 +42,7 @@ fun navBar() {
 
 
 
-//    @Composable
-//    fun HomeScreen() {
-//
-//        Column(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(16.dp),
-//            verticalArrangement = Arrangement.spacedBy(12.dp)
-//        ) {
-//            Title("Welcome!")
-//            SettingsPage()
-//            //SearchField()
-//        }
-//
-//
-//    }
+
     //@Preview
     @Composable
         fun SettingsPage(){
@@ -70,8 +51,46 @@ fun navBar() {
             val user = FirebaseAuth.getInstance().currentUser
             val uid = user!!.uid
 
+        val openDialog = remember { mutableStateOf(false) }
+        var text by remember { mutableStateOf("") }
 
+        if (openDialog.value) {
+            AlertDialog(
+                onDismissRequest = {
+                    openDialog.value = false
+                },
+                title = {
+                    Text(text = "About")
+                },
+                text = {
+                    Column() {
 
+                        Text("Finance App")
+                        Text("API courtesy of AlphaVantage")
+                        Text("Copyright 2022")
+                        Text("github.com/willGitAcct")
+
+                    }
+                },
+                buttons = {
+                    Row(
+                        modifier = Modifier.padding(all = 8.dp),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Button(
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(
+                                backgroundColor = Color(0xFF4974a5),
+                                contentColor = Color.White
+                            ),
+                            onClick = { openDialog.value = false }
+                        ) {
+                            Text("Dismiss")
+                        }
+                    }
+                }
+            )
+        }
 
         Box(modifier = Modifier.fillMaxWidth()) {
             Image(
@@ -142,6 +161,8 @@ fun navBar() {
 
                 Button(
                     onClick = {
+                        openDialog.value = true
+
 
                     },
                     modifier = Modifier
@@ -157,6 +178,7 @@ fun navBar() {
                     )
 
                 }
+
 
 
             }

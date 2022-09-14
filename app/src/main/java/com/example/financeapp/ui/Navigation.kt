@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -118,7 +119,7 @@ fun BottomNavScreen(navController: NavController, item:List<Screen>){
                 icon ={ Icon(painter = painterResource(id = screen.icons), contentDescription = null)},
                 label ={Text(screen.title)},
                 alwaysShowLabel = false,
-                selectedContentColor = MaterialTheme.colors.secondary)
+                selectedContentColor = Color.White)
         }
     }
 }
